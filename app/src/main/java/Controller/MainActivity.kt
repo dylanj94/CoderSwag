@@ -1,5 +1,6 @@
 package Controller
 
+import Adapters.CategoryAdapter
 import Model.Category
 import Services.DataService
 import android.R.layout.simple_list_item_1
@@ -12,7 +13,7 @@ import com.dylan.coderswag.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var adapter : ArrayAdapter<Category>
+    lateinit var adapter : CategoryAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, DataService.categories)
+        adapter = CategoryAdapter(this, DataService.categories)
 
         binding.categoryListView.adapter = adapter
     }
